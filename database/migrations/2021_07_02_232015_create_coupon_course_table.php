@@ -13,9 +13,11 @@ class CreateCouponCourseTable extends Migration
      */
     public function up()
     {
-        Schema::create('coupon__course', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
+        Schema::create('coupon_course', function (Blueprint $table) {
+            $table->unsignedBigInteger('course_id');
+            $table->foreign('course_id')->references('id')->on('courses');
+            $table->unsignedBigInteger('coupon_id');
+            $table->foreign('coupon_id')->references('id')->on('coupons');
         });
     }
 
@@ -26,6 +28,6 @@ class CreateCouponCourseTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('coupon__course');
+        Schema::dropIfExists('coupon_course');
     }
 }

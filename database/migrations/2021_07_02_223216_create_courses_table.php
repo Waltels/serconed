@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Course;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,6 +16,16 @@ class CreateCoursesTable extends Migration
     {
         Schema::create('courses', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->string('title')->unique();
+            $table->string('picture');
+            $table->text('description');
+            $table->float('price');
+            $table->boolean('featured')->default(false);
+            $table->enum('status', [
+                Course::PUBLISHED, Course::PENDING, Course::REJECTED
+            ])->default(Course::PENDING);
             $table->timestamps();
         });
     }
