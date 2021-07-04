@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Course;
 
 
 class CourseController extends Controller
 {
     public function index() {
-        dd(session('search[courses]'));
-        /*return view('learning.courses.index', compact('courses'));*/
+        $courses = Course::filtered();
+        return view('learning.courses.index', compact('courses'));
     }
 
     public function search() {

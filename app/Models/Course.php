@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 
 /**
  * App\Models\Course
@@ -68,5 +69,15 @@ class Course extends Model
 
     public function reviews() {
         return $this->hasMany(Review::class);
+    }
+
+    public function scopeFiltered(Builder $builder) {
+        $builder->with("teacher");
+        $builder->withCount("students");
+        $builder->where("status", Course::PUBLISHED);
+        if (session()->has('search[courses]')) {
+            $builder->where('title', 'LIKE', '%' . session('search[courses]') . '%');
+        }
+        return $builder->paginate();
     }
 }

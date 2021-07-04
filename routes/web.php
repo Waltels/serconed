@@ -39,6 +39,3 @@ Route::group(['prefix' => 'courses', 'as' => 'courses.'], function () {
     
     });*/
 });
-Route::get('/phpinfo', function () {
-    phpinfo();
-});
