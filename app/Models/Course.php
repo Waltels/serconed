@@ -80,4 +80,11 @@ class Course extends Model
         }
         return $builder->paginate();
     }
+    
+    public function scopeForTeacher(Builder $builder) {
+        return $builder
+            ->withCount('students')
+            ->where("user_id", auth()->id())
+            ->paginate();
+    }
 }

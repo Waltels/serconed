@@ -53,18 +53,19 @@ Route::group(['prefix' => 'courses', 'as' => 'courses.'], function () {
         ->name('reviews.store');
 });
 
-Route::group(['prefix' => 'teacher', 'as' => 'teacher.'], function () {
-    Route::get('/', 'TeacherController@index')->name('index');
+Route::group(['prefix' => 'teacher', 'as' => 'teacher.', 'middleware' =>['teacher']], function () {
+    Route::get('/', 'TeacherController@index')
+        ->name('index');
 
     /**
      * COURSE ROUTES
      */
-   /* Route::get('/courses', 'TeacherController@courses')
+    Route::get('/courses', 'TeacherController@courses')
         ->name('courses');
 
     Route::get('/courses/create', 'TeacherController@createCourse')
         ->name('courses.create');
-    Route::post('/courses/store', 'TeacherController@storeCourse')
+    /*Route::post('/courses/store', 'TeacherController@storeCourse')
         ->name('courses.store');
 
     Route::get('/courses/{course}', 'TeacherController@editCourse')
