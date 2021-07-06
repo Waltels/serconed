@@ -76,13 +76,13 @@ Route::group(['prefix' => 'teacher', 'as' => 'teacher.', 'middleware' =>['teache
     /**
      * UNIT ROUTES
      */
-    /*Route::get('/units', 'TeacherController@units')
+    Route::get('/units', 'TeacherController@units')
         ->name('units');
     Route::get('/units/create', 'TeacherController@createUnit')
         ->name('units.create');
     Route::post('/units/store', 'TeacherController@storeUnit')
         ->name('units.store');
-    Route::get('/units/{unit}', 'TeacherController@editUnit')
+    /*Route::get('/units/{unit}', 'TeacherController@editUnit')
         ->name('units.edit');
     Route::put('/units/{unit}', 'TeacherController@updateUnit')
         ->name('units.update');

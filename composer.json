@@ -13,7 +13,8 @@
         "fideloper/proxy": "^4.4",
         "laravel-lang/lang": "~5.0",
         "laravel/framework": "^6.20.26",
-        "laravel/tinker": "^2.5"
+        "laravel/tinker": "^2.5",
+        "laravelcollective/html": "^6.2"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.6",
